@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+.vercel/
+*.tsbuildinfo
+frontend/vite.config.js
+frontend/vite.config.d.ts
+*.log
+
+# Local verification artifacts
+garden-house-desktop-check.png
+garden-house-mobile-check.png

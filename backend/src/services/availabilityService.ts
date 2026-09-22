@@ -1,0 +1,2 @@
+function pad(n:number){return String(n).padStart(2,'0')}
+export function getSampleAvailability(){const now=new Date(),dates:string[]=[];for(const [add,len] of [[4,3],[13,5],[29,4],[48,6]] as const){for(let i=0;i<len;i++){const d=new Date(now.getFullYear(),now.getMonth(),now.getDate()+add+i);dates.push(`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`)}}return {bookedDates:dates,updatedAt:new Date().toISOString(),source:'sample'} }
