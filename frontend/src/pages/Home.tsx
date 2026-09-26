@@ -44,7 +44,7 @@ export function Home() {
         <div className="house-gallery-intro"><p>{t("Spaces shaped for slow mornings, long afternoons and evenings outside.")}</p><Link className="text-link" to="/gallery">{t("View full gallery →")}</Link></div>
       </Reveal>
       <div className="house-gallery-track">
-        <Reveal className="house-gallery-image"><img src="/images/IMG-20240113-WA0007.jpg" alt={t("Flowering garden and outdoor fireplace at Sa Corte Antiga")}/></Reveal>
+        <Reveal className="house-gallery-image"><img src="/images/IMG-20240113-WA0003.jpg" alt={t("Dining area inside Sa Corte Antiga")}/></Reveal>
         <Reveal className="house-gallery-image"><img src="/images/IMG-20240113-WA0008.jpg" alt={t("Shaded terrace and outdoor table at Sa Corte Antiga")}/></Reveal>
         <Reveal className="house-gallery-image"><img src="/images/IMG-20240113-WA0009.jpg" alt={t("Sunny garden seating at Sa Corte Antiga")}/></Reveal>
         <Reveal className="house-gallery-image"><img src="/images/IMG-20240113-WA0013.jpg" alt={t("Stone and stucco detail at Sa Corte Antiga")}/></Reveal>

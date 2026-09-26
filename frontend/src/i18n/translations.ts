@@ -3,6 +3,7 @@ export const italian: Readonly<Record<string, string>> = {
   "BOOK YOUR STAY": "PRENOTA IL TUO SOGGIORNO",
   "Book Sa Corte Antiga": "Prenota a Sa Corte Antiga",
   "Check availability and complete your reservation with one of our trusted booking partners.": "Verifica la disponibilità e prenota tramite una delle nostre piattaforme partner di fiducia.",
+  "Dining area inside Sa Corte Antiga": "La zona pranzo all’interno di Sa Corte Antiga",
   "Name, email and message are required.": "Nome, email e messaggio sono obbligatori.",
   "Please add a little more detail to your message.": "Aggiungi qualche dettaglio in più al tuo messaggio.",
   "Departure must be after arrival.": "La partenza deve essere successiva all’arrivo.",

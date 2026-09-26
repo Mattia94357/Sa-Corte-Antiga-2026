@@ -236,41 +236,46 @@ h1 em, h2 em { font-weight: 500 !important; }
   .hero-copy h1, .garden-house-hero-copy h1 { font-size: clamp(44px,9vw,68px); }
 }
 
-/* Booking platform CTAs: monochrome travel symbols and restrained motion. */
-.booking-links { flex-wrap: wrap; gap: 12px; }
+/* Booking platform CTAs: local brand marks with restrained platform accents. */
+.booking-links { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
 .booking-links a {
-  display: inline-flex;
+  position: relative;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  min-height: 52px;
-  padding: 14px 20px;
-  border: 1px solid var(--line);
-  background: var(--cream);
+  min-width: 0;
+  min-height: 58px;
+  padding: 14px 18px 14px 56px;
+  border: 1px solid var(--platform-border,var(--line));
+  background: var(--platform-tint,var(--cream));
   color: var(--ink);
   white-space: nowrap;
-  transition: border-color .25s ease, background-color .25s ease;
+  box-shadow: 0 8px 22px rgba(37,35,31,0);
+  transition: transform .25s ease, border-color .25s ease, background-color .25s ease, box-shadow .25s ease;
 }
-.booking-platform-icon {
-  width: 21px;
-  height: 21px;
-  flex: 0 0 21px;
-  stroke: currentColor;
-  stroke-width: 1.4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.booking-platform-logo {
+  position: absolute;
+  left: 18px;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
   transition: transform .25s ease;
 }
+.booking-platform-agoda .booking-platform-logo { width: 42px; height: 27px; left: 12px; }
+.booking-platform-booking { --platform-border: rgba(0,58,154,.27); --platform-tint: rgba(0,58,154,.035); --platform-hover: rgba(0,58,154,.075); }
+.booking-platform-airbnb { --platform-border: rgba(255,90,95,.3); --platform-tint: rgba(255,90,95,.04); --platform-hover: rgba(255,90,95,.085); }
+.booking-platform-agoda { --platform-border: rgba(74,74,74,.24); --platform-tint: rgba(252,183,22,.035); --platform-hover: rgba(252,183,22,.09); }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .booking-links a:hover { border-color: var(--ink); background: var(--sand); }
-  .booking-links a:hover .booking-platform-icon { transform: translateY(-2px); }
+  .booking-links a:hover { transform: translateY(-3px); background: var(--platform-hover,var(--sand)); box-shadow: 0 10px 24px rgba(37,35,31,.09); }
+  .booking-links a:hover .booking-platform-logo { transform: scale(1.04); }
 }
+.booking-links a:active { transform: translateY(1px); }
 @media (max-width: 767px) {
-  .booking-links { align-items: stretch; }
+  .booking-links { grid-template-columns: minmax(0,1fr); align-items: stretch; gap: 10px; }
   .booking-links a { width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .booking-links a, .booking-platform-icon { transition: none; }
+  .booking-links a, .booking-platform-logo { transition: none; }
 }
 
 /* Language controls share the header's existing property-navigation space. */
@@ -300,8 +305,11 @@ html[lang="it"] .section h2, html[lang="it"] .contact-intro h1 { overflow-wrap: 
 .early-booking h2 { font-size: clamp(28px,2.6vw,40px); line-height: 1.2; letter-spacing: -.025em; margin: 12px 0 16px; }
 .early-booking .eyebrow { margin: 0; }
 .early-booking > div > p:last-child { max-width: 540px; margin: 0; line-height: var(--leading-body); }
-.early-booking .booking-links { margin: 0; justify-content: flex-start; }
-.early-booking .booking-links a { padding-inline: 16px; }
+.early-booking .booking-links { width: min(52vw,660px); margin: 0; justify-content: flex-start; }
+@media (max-width: 1279px) {
+  .early-booking { grid-template-columns: minmax(0,1fr); gap: 28px; }
+  .early-booking .booking-links { width: 100%; }
+}
 @media (max-width: 1024px) {
   .hero { height: clamp(520px,82svh,760px); min-height: 0; }
   .hero img.hero-image { object-position: 35% center; transform: none !important; }
