@@ -31,6 +31,11 @@ export function Home() {
       <div className="scroll-cue">{t("SCROLL ")}<i/></div>
     </section>
 
+    <section className="early-booking section" aria-labelledby="early-booking-title">
+      <div><p className="eyebrow">{t('BOOK YOUR STAY')}</p><h2 id="early-booking-title">{t('Book Sa Corte Antiga')}</h2><p>{t('Check availability and complete your reservation with one of our trusted booking partners.')}</p></div>
+      <BookingLinks compact/>
+    </section>
+
     <section className="intro section"><Reveal><p className="eyebrow">{t("THE HOUSE · THE COAST · THE QUIET")}</p><h2>{t("A quiet Sardinian retreat ")}<em>{t("between the cliffs, the sea and the village of Nebida.")}</em></h2></Reveal><div className="intro-note"><span>39°18′ N<br/>8°26′ E</span><p>{t("A private base for slow mornings, salt-air afternoons and evenings under an open sky.")}</p></div></section>
     <section className="experience"><div className="experience-image"><img src="/images/IMG-20240113-WA0007.jpg" alt={t("The garden at Sa Corte Antiga")}/></div><Reveal className="experience-copy"><p className="eyebrow">{t("A SENSE OF PLACE")}</p><h2>{t("Made for days lived ")}<em>{t("outdoors.")}</em></h2><p>{t("Step into a home shaped by the rhythm of the island: breakfast in the shade, a day beside the sea, and the garden waiting when you return.")}</p><div className="detail-row"><span>{t("GARDEN LIVING")}</span><span>{t("VILLAGE SETTING")}</span><span>{t("COASTAL ESCAPE")}</span></div></Reveal></section>
     <section className="house-gallery section">

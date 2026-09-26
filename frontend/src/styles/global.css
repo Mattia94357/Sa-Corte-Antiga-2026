@@ -293,3 +293,69 @@ h1 em, h2 em { font-weight: 500 !important; }
 html[lang="it"] .hero-actions { max-width: 86vw; flex-wrap: wrap; }
 html[lang="it"] .hero-copy h1, html[lang="it"] .page-hero h1,
 html[lang="it"] .section h2, html[lang="it"] .contact-intro h1 { overflow-wrap: break-word; }
+
+/* Fill the actual hero bounds: negative inset + the global image width cap left a gap. */
+.hero img.hero-image { inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; }
+.early-booking { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 40px; align-items: center; padding-block: calc(var(--section-gap) / 2); }
+.early-booking h2 { font-size: clamp(28px,2.6vw,40px); line-height: 1.2; letter-spacing: -.025em; margin: 12px 0 16px; }
+.early-booking .eyebrow { margin: 0; }
+.early-booking > div > p:last-child { max-width: 540px; margin: 0; line-height: var(--leading-body); }
+.early-booking .booking-links { margin: 0; justify-content: flex-start; }
+.early-booking .booking-links a { padding-inline: 16px; }
+@media (max-width: 1024px) {
+  .hero { height: clamp(520px,82svh,760px); min-height: 0; }
+  .hero img.hero-image { object-position: 35% center; transform: none !important; }
+  .early-booking { grid-template-columns: minmax(0,1fr); gap: 28px; padding-block: var(--section-gap); }
+  .early-booking + .intro { padding-top: 0; }
+  .intro { gap: 36px; }
+  .editorial { gap: 24px; }
+  .hike-feature { gap: 36px; }
+  .hike-feature img { max-height: none; }
+  .house-gallery-image { aspect-ratio: 4/3; }
+  .split-feature > img { height: auto; max-height: 640px; aspect-ratio: 3/2; object-fit: cover; }
+  .garden-house-intro-image { width: min(100%,720px); height: auto; aspect-ratio: auto; }
+  .garden-house-intro-image img { height: auto; object-fit: contain; }
+  .garden-house-outdoor-image { height: clamp(440px,72svh,740px); aspect-ratio: auto; }
+}
+@media (max-width: 767px) {
+  :root { --section-gap-sm: 64px; }
+  .hero { height: clamp(520px,80svh,680px); }
+  .hero img.hero-image { object-position: 18% center; }
+  .hero-copy { bottom: 24%; }
+  .hero-copy > span { max-width: 32ch; }
+  .hero-actions { bottom: 5%; gap: 8px 16px; }
+  .early-booking { gap: 24px; padding-block: calc(var(--section-gap) * .75); }
+  .early-booking h2 { max-width: 18ch; }
+  .early-booking .booking-links { width: 100%; }
+  .early-booking + .intro { padding-top: calc(var(--section-gap) / 4); }
+  .intro h2 { font-size: clamp(30px,8vw,38px); line-height: 1.18; }
+  .intro-note p { margin-bottom: 0; }
+  .experience-image { aspect-ratio: auto; }
+  .experience-image img { height: auto; }
+  .house-gallery-heading { gap: 0; }
+  .house-gallery-track { margin-top: 32px; }
+  .house-gallery-image { flex-basis: 80vw; aspect-ratio: 4/3; }
+  .house-gallery-heading h2, .why-copy h2 { font-size: clamp(30px,8.2vw,38px); line-height: 1.16; }
+  .section-heading h2 { margin-bottom: 16px; }
+  .calendar-shell { margin-top: 24px; }
+  .availability > .booking-links { margin-top: 24px; }
+  .why-preview { margin-bottom: 0; }
+  .why-photo { aspect-ratio: 1/1; }
+  .why-photo img { object-position: 55% center; }
+  .why-copy { padding-bottom: var(--section-gap); }
+  .garden-house-intro { gap: 32px; }
+  .garden-house-intro-image img { max-height: none; }
+  .garden-house-outdoor-image { height: auto; aspect-ratio: 3/4; }
+  .garden-house-inside-heading { margin-bottom: 12px; }
+  .garden-house-gallery-cta { padding-top: 24px; }
+  .footer { padding-top: var(--section-gap); }
+  .footer-mark h2 { margin: 24px 0; font-size: clamp(29px,7.5vw,36px); }
+  .footer-links { grid-template-columns: minmax(0,1.15fr) minmax(0,1fr); margin-top: 32px; padding-block: 28px; gap: 24px 20px; }
+  .footer-links small { margin-bottom: 4px; }
+  .footer-links a { line-height: 1.45; }
+  .footer-bottom { gap: 8px; padding-top: 20px; font-size: 11px; }
+}
+@media (max-width: 767px) and (max-height: 600px) {
+  .hero { min-height: 520px; }
+  .hero-copy { bottom: 140px; }
+}

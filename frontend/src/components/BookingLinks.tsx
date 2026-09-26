@@ -8,12 +8,12 @@ const platforms = [
   { name: 'Agoda', href: EXTERNAL_LINKS.agoda, icon: <><rect x="4" y="7" width="16" height="14" rx="2"/><path d="M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3M8 7v14M16 7v14"/></> },
 ];
 
-export function BookingLinks() {
+export function BookingLinks({ compact = false }: { compact?: boolean }) {
   const { t } = useLanguage();
   return <div className="booking-links">
     {platforms.map(({ name, href, icon }) => <a key={name} href={href} target="_blank" rel="noopener noreferrer">
       <svg className="booking-platform-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">{icon}</svg>
-      <span>{t("See on ")}{name}</span>
+      <span>{!compact && t("See on ")}{name}</span>
     </a>)}
   </div>;
 }
