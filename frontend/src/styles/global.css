@@ -50,9 +50,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .site-header.menu-open .brand { pointer-events: none; }
 .calendar-toolbar > div { display: flex; flex-shrink: 0; }
 .contact-form input, .contact-form textarea { min-width: 0; max-width: 100%; }
+.mobile-header-controls { display: none; }
 @media (max-width: 1200px) {
   .site-header { grid-template-columns: 1fr auto; height: 88px; }
   .desktop-nav, .property-nav { display: none; }
+  .mobile-header-controls { display: flex; align-items: center; gap: 2px; justify-self: end; }
+  .mobile-header-controls .language-switcher { padding-inline: 2px; background: rgba(20,24,24,.16); backdrop-filter: blur(8px); }
   .menu-toggle { display: flex; flex-direction: column; gap: 7px; border: 0; background: transparent; padding: 12px; min-width: 44px; min-height: 44px; justify-content: center; }
   .menu-toggle span { width: 28px; border-top: 1px solid #fff; }
   .mobile-nav { display: flex; position: fixed; inset: 0; background: #2d4f5d; padding: 110px 8vw 40px; flex-direction: column; gap: 14px; z-index: -1; color: #fff; }
@@ -289,7 +292,6 @@ h1 em, h2 em { font-weight: 500 !important; }
 .language-switcher button[aria-pressed="true"] { opacity: 1; border-bottom-color: var(--salmon); }
 .language-switcher button:hover, .language-switcher button:focus-visible { opacity: 1; }
 .language-switcher svg { display: block; width: 24px; height: 16px; overflow: hidden; }
-.mobile-nav .language-switcher { margin-top: 12px; }
 @media (min-width: 1201px) {
   .site-header { grid-template-columns: auto minmax(0,1fr) auto; }
   .desktop-nav { justify-self: center; gap: 18px; }

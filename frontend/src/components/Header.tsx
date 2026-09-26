@@ -15,6 +15,7 @@ export function Header() {
   const { t } = useLanguage();
   const [menu, setMenu] = useState(false);
   const toggle = useRef<HTMLButtonElement>(null);
+  const headerControls = useRef<HTMLDivElement>(null);
   const menuPanel = useRef<HTMLElement>(null);
   useEffect(() => {
     if (!menu) return;
@@ -23,7 +24,7 @@ export function Header() {
     const onKey = (event: KeyboardEvent) => {
       if (event.key === 'Escape') { setMenu(false); toggle.current?.focus(); }
       if (event.key === 'Tab') {
-        const controls = [toggle.current, ...Array.from(menuPanel.current?.querySelectorAll<HTMLButtonElement>('button') ?? [])].filter((element): element is HTMLButtonElement => element !== null);
+        const controls = [...Array.from(headerControls.current?.querySelectorAll<HTMLButtonElement>('button') ?? []), ...Array.from(menuPanel.current?.querySelectorAll<HTMLButtonElement>('button') ?? [])];
         const first = controls[0], last = controls[controls.length - 1];
         if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
         else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
@@ -51,7 +52,7 @@ export function Header() {
       <Link className={`garden-property ${gardenActive ? 'active' : ''}`} to="/garden-house"><span>Garden House</span><GardenHouseMark/></Link>
       <LanguageSwitcher/>
     </nav>
-    <button ref={toggle} className="menu-toggle" aria-label={menu ? t('Close menu') : t('Open menu')} aria-expanded={menu} aria-controls="mobile-navigation" onClick={() => setMenu(!menu)}><span/><span/></button>
-    <AnimatePresence>{menu && <motion.nav ref={menuPanel} id="mobile-navigation" aria-label={t("Main navigation")} className="mobile-nav" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><button onClick={() => go('/')}>{t("Home")}</button><button onClick={() => go('/why-sa-corte-antiga')}>{t("Why Sa Corte Antiga")}</button><button onClick={() => go('/gallery')}>{t("Gallery")}</button><button onClick={() => go('/contact')}>{t("Contact")}</button><small>{t("SELECT A STAY")}</small><button className={`mobile-property-link ${!gardenActive ? 'active' : ''}`} onClick={() => go('/')}>Sa Corte Antiga</button><button className={`mobile-property-link garden-property ${gardenActive ? 'active' : ''}`} onClick={() => go('/garden-house')}><span>Garden House</span><GardenHouseMark/></button><LanguageSwitcher/></motion.nav>}</AnimatePresence>
+    <div className="mobile-header-controls" ref={headerControls}><LanguageSwitcher/><button ref={toggle} className="menu-toggle" aria-label={menu ? t('Close menu') : t('Open menu')} aria-expanded={menu} aria-controls="mobile-navigation" onClick={() => setMenu(!menu)}><span/><span/></button></div>
+    <AnimatePresence>{menu && <motion.nav ref={menuPanel} id="mobile-navigation" aria-label={t("Main navigation")} className="mobile-nav" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><button onClick={() => go('/')}>{t("Home")}</button><button onClick={() => go('/why-sa-corte-antiga')}>{t("Why Sa Corte Antiga")}</button><button onClick={() => go('/gallery')}>{t("Gallery")}</button><button onClick={() => go('/contact')}>{t("Contact")}</button><small>{t("SELECT A STAY")}</small><button className={`mobile-property-link ${!gardenActive ? 'active' : ''}`} onClick={() => go('/')}>Sa Corte Antiga</button><button className={`mobile-property-link garden-property ${gardenActive ? 'active' : ''}`} onClick={() => go('/garden-house')}><span>Garden House</span><GardenHouseMark/></button></motion.nav>}</AnimatePresence>
   </header>;
 }
