@@ -489,3 +489,17 @@ html[lang="it"] .section h2, html[lang="it"] .contact-intro h1 { overflow-wrap: 
 @media (prefers-reduced-motion: reduce) {
   .booking-whatsapp, .booking-whatsapp img { transition: none; }
 }
+
+/* Homepage property hero: preserve the terrace table, loungers and greenery. */
+.hero img.hero-image { object-position: 50% 56%; }
+.hero-shade {
+  background:
+    linear-gradient(90deg,rgba(17,22,18,.4) 0%,rgba(17,22,18,.17) 48%,transparent 78%),
+    linear-gradient(180deg,rgba(10,20,18,.12),rgba(12,19,17,.05) 40%,rgba(12,16,15,.56));
+}
+@media (max-width: 1024px) {
+  .hero img.hero-image { object-position: 50% 54%; }
+}
+@media (max-width: 767px) {
+  .hero img.hero-image { object-position: 48% 54%; }
+}

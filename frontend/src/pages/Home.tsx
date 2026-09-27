@@ -17,7 +17,7 @@ export function Home() {
 
   return <>
     <section className="hero" ref={hero}>
-      <motion.img className="hero-image" src="/images/masua immagine.jpg" alt={t("The Mediterranean coastline near Nebida")} style={{ scale }}/>
+      <motion.img className="hero-image" src="/images/IMG-20240113-WA0008.jpg" alt={t("Shaded terrace and outdoor table at Sa Corte Antiga")} style={{ scale }}/>
       <div className="hero-shade"/>
       <motion.div className="hero-copy" style={{ y, opacity: fade }}>
         <p>Nebida · Sardegna</p>
