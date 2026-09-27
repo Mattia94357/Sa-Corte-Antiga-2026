@@ -17,6 +17,7 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const lastScrollY = useRef(0);
+  const heroVisible = useRef(false);
   const toggle = useRef<HTMLButtonElement>(null);
   const headerControls = useRef<HTMLDivElement>(null);
   const menuPanel = useRef<HTMLElement>(null);
@@ -50,6 +51,15 @@ export function Header() {
     lastScrollY.current = Math.max(window.scrollY, 0);
     setScrolled(lastScrollY.current > 12);
     setHidden(false);
+    const hero = document.querySelector<HTMLElement>('main .hero, main .page-hero, main .garden-house-hero, main .gallery-hero, main .garden-house-gallery-hero');
+    heroVisible.current = Boolean(hero && hero.getBoundingClientRect().bottom > 0);
+    const heroObserver = hero ? new IntersectionObserver(([entry]) => {
+      const visible = Boolean(entry?.isIntersecting);
+      heroVisible.current = visible;
+      lastScrollY.current = Math.max(window.scrollY, 0);
+      if (visible) setHidden(false);
+    }, { threshold: 0 }) : null;
+    if (hero && heroObserver) heroObserver.observe(hero);
     let frame = 0;
     const onScroll = () => {
       if (frame) return;
@@ -57,13 +67,13 @@ export function Header() {
         const current = Math.max(window.scrollY, 0);
         const atTop = current <= 12;
         setScrolled(!atTop);
-        if (atTop || menu) {
+        if (atTop || menu || heroVisible.current) {
           setHidden(false);
           lastScrollY.current = current;
         } else {
           const delta = current - lastScrollY.current;
           if (Math.abs(delta) >= 8) {
-            setHidden(delta > 0 && current > 80);
+            setHidden(delta > 0 && (hero ? true : current > 80));
             lastScrollY.current = current;
           }
         }
@@ -72,6 +82,7 @@ export function Header() {
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => {
+      heroObserver?.disconnect();
       window.removeEventListener('scroll', onScroll);
       if (frame) window.cancelAnimationFrame(frame);
     };

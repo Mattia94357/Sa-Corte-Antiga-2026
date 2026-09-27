@@ -514,12 +514,13 @@ html[lang="it"] .section h2, html[lang="it"] .contact-intro h1 { overflow-wrap: 
   transform: translateY(0);
   transition:
     transform .38s cubic-bezier(.22,.75,.24,1),
+    opacity .38s cubic-bezier(.22,.75,.24,1),
     background-color .34s ease,
     border-color .34s ease,
     color .34s ease;
-  will-change: transform;
+  will-change: transform, opacity;
 }
-.site-header.header-hidden { transform: translateY(calc(-100% - 2px)); }
+.site-header.header-hidden { transform: translateY(calc(-100% - 2px)); opacity: 0; }
 .site-header.header-scrolled {
   color: var(--ink);
   background: rgba(244,239,229,.9);
@@ -605,4 +606,29 @@ section[id] { scroll-margin-top: 90px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .site-header { transition: none; }
+}
+
+/* Availability remains fail-closed while the private Airbnb feed is unresolved. */
+.days .unknown {
+  border: 1px solid var(--line) !important;
+  background: transparent;
+  color: var(--ink);
+  opacity: .32;
+}
+.legend i.unknown {
+  border-color: var(--line);
+  background: repeating-linear-gradient(135deg,transparent 0 2px,rgba(37,35,31,.12) 2px 3px);
+}
+.availability-loading .calendar-grid,
+.availability-error .calendar-grid { cursor: not-allowed; }
+.calendar-toolbar > p {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  min-height: 3.2em;
+  margin-block: 0;
+}
+@media (max-width: 480px) {
+  .calendar-toolbar { flex-wrap: nowrap; }
 }
