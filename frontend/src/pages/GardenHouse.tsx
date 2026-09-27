@@ -31,8 +31,6 @@ export function GardenHouse() {
     <section className="garden-house-inside section">
       <Reveal className="garden-house-inside-heading"><p className="eyebrow">{t("INSIDE")}</p><h2>{t("Simple, calm and")}<br/><em>{t("ready for the day.")}</em></h2></Reveal>
       <Reveal className="garden-house-inside-image"><img src={images.dining} alt={t("Dining area at Garden House")} loading="lazy"/></Reveal>
-      <Reveal className="garden-house-inside-image"><img src={images.bedroom} alt={t("Bedroom at Garden House")} loading="lazy"/></Reveal>
-      <Reveal className="garden-house-inside-image"><img src={images.living} alt={t("Sofa and Mediterranean prints at Garden House")} loading="lazy"/></Reveal>
       <div className="garden-house-gallery-cta"><p>{t("A first look at the spaces inside and out.")}</p><Link className="button dark" to="/garden-house/gallery">{t("View gallery")}</Link></div>
     </section>
   </div>;

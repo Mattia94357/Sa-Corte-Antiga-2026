@@ -21,6 +21,7 @@ export function Contact() {
   }, [language]);
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (state === 'sending') return;
     const form = e.currentTarget;
     setState('sending');
     const data = Object.fromEntries(new FormData(form).entries()) as Record<string, string>;
@@ -45,7 +46,7 @@ export function Contact() {
       <label>{t('Phone')} <span>{t('optional')}</span><input name="phone" type="tel" autoComplete="tel"/></label>
       <div className="form-row"><label>{t('Arrival')} <span>{t('optional')}</span><input name="arrivalDate" type="date"/></label><label>{t('Departure')} <span>{t('optional')}</span><input name="departureDate" type="date"/></label></div>
       <label>{t('Message *')}<textarea name="message" required rows={6}/></label>
-      <button className="button dark" disabled={state === 'sending'}>{t(state === 'sending' ? 'Sending…' : 'Send enquiry')}</button>
+      <button className="button dark" type="submit" disabled={state === 'sending'} aria-busy={state === 'sending'}>{t(state === 'sending' ? 'Sending…' : 'Send enquiry')}</button>
       {state !== 'idle' && state !== 'sending' && <p role="status" className={`form-status ${state}`}>{t(msg)}</p>}
     </form>
   </div>;

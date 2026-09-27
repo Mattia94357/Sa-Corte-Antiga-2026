@@ -9,10 +9,16 @@ const platforms = [
 
 export function BookingLinks({ compact = false }: { compact?: boolean }) {
   const { t } = useLanguage();
-  return <div className="booking-links">
-    {platforms.map(({ id, name, href, logo }) => <a className={`booking-platform booking-platform-${id}`} key={name} href={href} target="_blank" rel="noopener noreferrer">
-      <img className="booking-platform-logo" src={logo} alt="" aria-hidden="true"/>
-      <span>{!compact && t("See on ")}{name}</span>
-    </a>)}
+  return <div className="booking-options">
+    <div className="booking-links">
+      {platforms.map(({ id, name, href, logo }) => <a className={`booking-platform booking-platform-${id}`} key={name} href={href} target="_blank" rel="noopener noreferrer">
+        <img className="booking-platform-logo" src={logo} alt="" aria-hidden="true"/>
+        <span>{!compact && t("See on ")}{name}</span>
+      </a>)}
+    </div>
+    <div className="booking-direct">
+      <p><strong>{t("Book with our partners")}</strong><span>{t("or contact us directly on WhatsApp")}</span></p>
+      <a className="booking-whatsapp" href={EXTERNAL_LINKS.whatsapp} target="_blank" rel="noopener noreferrer"><img src="/brands/whatsapp.svg" alt="" aria-hidden="true"/><span>WhatsApp</span></a>
+    </div>
   </div>;
 }
