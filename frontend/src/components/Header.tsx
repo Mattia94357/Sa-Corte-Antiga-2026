@@ -14,6 +14,9 @@ function GardenHouseMark() {
 export function Header() {
   const { t } = useLanguage();
   const [menu, setMenu] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
   const toggle = useRef<HTMLButtonElement>(null);
   const headerControls = useRef<HTMLDivElement>(null);
   const menuPanel = useRef<HTMLElement>(null);
@@ -43,14 +46,48 @@ export function Header() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const gardenActive = pathname.startsWith('/garden-house');
+  useEffect(() => {
+    lastScrollY.current = Math.max(window.scrollY, 0);
+    setScrolled(lastScrollY.current > 12);
+    setHidden(false);
+    let frame = 0;
+    const onScroll = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        const current = Math.max(window.scrollY, 0);
+        const atTop = current <= 12;
+        setScrolled(!atTop);
+        if (atTop || menu) {
+          setHidden(false);
+          lastScrollY.current = current;
+        } else {
+          const delta = current - lastScrollY.current;
+          if (Math.abs(delta) >= 8) {
+            setHidden(delta > 0 && current > 80);
+            lastScrollY.current = current;
+          }
+        }
+        frame = 0;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, [menu, pathname]);
   const go = (path: string) => { setMenu(false); navigate(path); };
-  return <header className={`site-header ${menu ? 'menu-open' : ''} ${pathname === '/contact' ? 'header-dark' : ''}`}>
+  return <header className={`site-header ${menu ? 'menu-open' : ''} ${scrolled ? 'header-scrolled' : 'header-at-top'} ${hidden ? 'header-hidden' : ''} ${pathname === '/contact' ? 'header-dark' : ''}`}>
     <Link className="brand" to="/"><span>SA CORTE ANTIGA</span><small>NEBIDA · SARDEGNA</small></Link>
     <nav className="desktop-nav"><NavLink to="/">{t("Home")}</NavLink><NavLink to="/why-sa-corte-antiga">{t("Why Sa Corte Antiga")}</NavLink><NavLink to="/gallery">{t("Gallery")}</NavLink><NavLink to="/contact">{t("Contact")}</NavLink></nav>
     <nav className="property-nav" aria-label={t("Properties")}>
       <Link className={!gardenActive ? 'active' : ''} to="/">Sa Corte Antiga</Link>
       <Link className={`garden-property ${gardenActive ? 'active' : ''}`} to="/garden-house"><span>Garden House</span><GardenHouseMark/></Link>
       <LanguageSwitcher/>
+    </nav>
+    <nav className="mobile-property-nav" aria-label={t("Properties")}>
+      <Link className={!gardenActive ? 'active' : ''} to="/">Sa Corte Antiga</Link>
+      <Link className={gardenActive ? 'active' : ''} to="/garden-house">Garden House</Link>
     </nav>
     <div className="mobile-header-controls" ref={headerControls}><LanguageSwitcher/><button ref={toggle} className="menu-toggle" aria-label={menu ? t('Close menu') : t('Open menu')} aria-expanded={menu} aria-controls="mobile-navigation" onClick={() => setMenu(!menu)}><span/><span/></button></div>
     <AnimatePresence>{menu && <motion.nav ref={menuPanel} id="mobile-navigation" aria-label={t("Main navigation")} className="mobile-nav" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><button onClick={() => go('/')}>{t("Home")}</button><button onClick={() => go('/why-sa-corte-antiga')}>{t("Why Sa Corte Antiga")}</button><button onClick={() => go('/gallery')}>{t("Gallery")}</button><button onClick={() => go('/contact')}>{t("Contact")}</button><small>{t("SELECT A STAY")}</small><button className={`mobile-property-link ${!gardenActive ? 'active' : ''}`} onClick={() => go('/')}>Sa Corte Antiga</button><button className={`mobile-property-link garden-property ${gardenActive ? 'active' : ''}`} onClick={() => go('/garden-house')}><span>Garden House</span><GardenHouseMark/></button></motion.nav>}</AnimatePresence>
