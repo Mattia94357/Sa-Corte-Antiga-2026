@@ -639,3 +639,83 @@ section[id] { scroll-margin-top: 90px; }
 @media (max-width: 480px) {
   .calendar-toolbar { flex-wrap: nowrap; }
 }
+
+/* Guided date and guest selection within the existing availability calendar. */
+.days button {
+  width: 100%;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(53,105,102,.42);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.25;
+  cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+}
+.days button:disabled { cursor: not-allowed; }
+.days button.booked { border-color: var(--salmon); background: var(--salmon); }
+.days button.past { border-color: transparent; }
+.days button.selected-range { border-radius: 0; border-color: transparent; background: rgba(53,105,102,.1); }
+.days button.selected-start,
+.days button.selected-end { border-color: var(--blue); background: var(--blue); color: var(--cream); }
+.guest-selector {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.guest-selector > span,
+.availability-confirmation strong { font-size: 12px; font-weight: 600; letter-spacing: .08em; }
+.guest-stepper { display: grid; grid-template-columns: 44px 42px 44px; align-items: center; text-align: center; }
+.guest-stepper button {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--line);
+  background: transparent;
+  font-size: 20px;
+  line-height: 1;
+}
+.guest-stepper button:disabled { opacity: .3; }
+.guest-stepper output { font-size: 16px; font-weight: 500; }
+.calendar-state { min-height: 62px; }
+.calendar-state .legend { border-top: 0; padding-top: 20px; }
+.availability-confirmation {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-height: 62px;
+  color: var(--blue);
+}
+.availability-check { font-family: var(--font-body); font-size: 38px; font-weight: 700; line-height: 1; }
+.booking-direction { display: none; }
+@media (max-width: 767px) {
+  .guest-stepper { grid-template-columns: 48px 42px 48px; }
+  .guest-stepper button { width: 48px; height: 48px; }
+  .calendar-state { min-height: 82px; }
+  .availability-confirmation { min-height: 82px; }
+  .booking-direction {
+    display: block;
+    margin-left: auto;
+    padding-right: 8px;
+    color: var(--ink);
+    font-size: 24px;
+    font-weight: 300;
+    opacity: .58;
+    animation: booking-direction 2.8s cubic-bezier(.4,0,.2,1) infinite;
+  }
+}
+@keyframes booking-direction {
+  0%, 100% { transform: translateY(-2px); opacity: .42; }
+  50% { transform: translateY(4px); opacity: .7; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .booking-direction { animation: none; }
+}

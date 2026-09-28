@@ -17,7 +17,7 @@ export function BookingLinks({ compact = false }: { compact?: boolean }) {
       </a>)}
     </div>
     <div className="booking-direct">
-      <p><strong>{t("Book with our partners")}</strong><span>{t("or contact us directly on WhatsApp")}</span></p>
+      <p>{t("OR CONTACT US ON WHATSAPP")}</p>
       <a className="booking-whatsapp" href={EXTERNAL_LINKS.whatsapp} target="_blank" rel="noopener noreferrer"><img src="/brands/whatsapp.svg" alt="" aria-hidden="true"/><span>WhatsApp</span></a>
     </div>
   </div>;

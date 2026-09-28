@@ -3,6 +3,10 @@ import { useLanguage } from '../i18n/LanguageContext';
 import { getAvailability, type BlockedRange } from '../services/api';
 
 type AvailabilityState = 'loading' | 'ready' | 'error';
+type DateSelection = { start: string | null; end: string | null };
+
+const MIN_GUESTS = 1;
+const MAX_GUESTS = 6;
 
 const iso = (date: Date) => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
 
@@ -19,7 +23,7 @@ function expandRanges(ranges: BlockedRange[]) {
   return dates;
 }
 
-function Month({ date, booked, state }: { date: Date; booked: Set<string>; state: AvailabilityState }) {
+function Month({ date, booked, state, selection, onSelect }: { date: Date; booked: Set<string>; state: AvailabilityState; selection: DateSelection; onSelect: (date: string) => void }) {
   const { t, locale } = useLanguage();
   const week = Array.from({ length: 7 }, (_, index) => new Intl.DateTimeFormat(locale, { weekday: 'narrow' }).format(new Date(2024, 0, 1 + index)));
   const year = date.getFullYear(), month = date.getMonth();
@@ -38,7 +42,20 @@ function Month({ date, booked, state }: { date: Date; booked: Set<string>; state
         const busy = state === 'ready' && booked.has(key);
         const unknown = state !== 'ready' && !past;
         const unavailable = past || busy || unknown;
-        return <span key={key} className={`${busy ? 'booked' : ''} ${past ? 'past' : ''} ${unknown ? 'unknown' : ''}`} title={t(busy ? 'Booked' : unavailable ? 'Unavailable' : 'Available')} aria-disabled={unavailable}>{day}</span>;
+        const selectedStart = selection.start === key;
+        const selectedEnd = selection.end === key;
+        const inRange = Boolean(selection.start && selection.end && key > selection.start && key < selection.end);
+        const dateLabel = new Intl.DateTimeFormat(locale, { dateStyle: 'long' }).format(new Date(year, month, day));
+        return <button
+          type="button"
+          key={key}
+          className={`${busy ? 'booked' : ''} ${past ? 'past' : ''} ${unknown ? 'unknown' : ''} ${selectedStart ? 'selected-start' : ''} ${selectedEnd ? 'selected-end' : ''} ${inRange ? 'selected-range' : ''}`}
+          title={t(busy ? 'Booked' : unavailable ? 'Unavailable' : 'Available')}
+          aria-label={`${dateLabel} · ${t(busy ? 'Booked' : unavailable ? 'Unavailable' : 'Available')}`}
+          aria-pressed={selectedStart || selectedEnd}
+          disabled={unavailable}
+          onClick={() => onSelect(key)}
+        >{day}</button>;
       })}
     </div>
   </div>;
@@ -53,6 +70,8 @@ export function Calendar() {
   const [offset, setOffset] = useState(0);
   const [booked, setBooked] = useState(new Set<string>());
   const [state, setState] = useState<AvailabilityState>('loading');
+  const [selection, setSelection] = useState<DateSelection>({ start: null, end: null });
+  const [guests, setGuests] = useState(2);
 
   useEffect(() => {
     let active = true;
@@ -73,10 +92,36 @@ export function Calendar() {
   const status = state === 'loading' ? 'Loading availability…' : state === 'ready' ? 'Availability updated from Airbnb' : 'Availability temporarily unavailable';
   const firstMonth = new Date(start.getFullYear(), start.getMonth() + offset, 1);
   const secondMonth = new Date(firstMonth.getFullYear(), firstMonth.getMonth() + 1, 1);
+  const rangeIsAvailable = (rangeStart: string, rangeEnd: string) => {
+    for (let current = rangeStart; current < rangeEnd; current = addUtcDay(current)) {
+      if (booked.has(current)) return false;
+    }
+    return true;
+  };
+  const selectDate = (date: string) => {
+    if (state !== 'ready') return;
+    if (!selection.start || selection.end || date <= selection.start) {
+      setSelection({ start: date, end: null });
+      return;
+    }
+    if (rangeIsAvailable(selection.start, date)) setSelection({ start: selection.start, end: date });
+    else setSelection({ start: date, end: null });
+  };
+  const confirmed = Boolean(selection.start && selection.end && rangeIsAvailable(selection.start, selection.end));
 
   return <div className={`calendar-shell availability-${state}`} aria-busy={state === 'loading'}>
     <div className="calendar-toolbar"><p aria-live="polite">{t(status)}</p><div><button aria-label={t('Previous month')} onClick={() => setOffset(Math.max(0, offset - 1))} disabled={offset === 0}>←</button><button aria-label={t('Next month')} onClick={() => setOffset(offset + 1)}>→</button></div></div>
-    <div className="calendar-grid"><Month date={firstMonth} booked={booked} state={state}/><Month date={secondMonth} booked={booked} state={state}/></div>
-    <div className="legend"><span><i className={state === 'ready' ? '' : 'unknown'}/>{t(state === 'ready' ? 'Available' : 'Unavailable')}</span><span><i className="unavailable"/>{t('Booked')}</span></div>
+    <div className="calendar-grid"><Month date={firstMonth} booked={booked} state={state} selection={selection} onSelect={selectDate}/><Month date={secondMonth} booked={booked} state={state} selection={selection} onSelect={selectDate}/></div>
+    <div className="guest-selector">
+      <span>{t('GUESTS')}</span>
+      <div className="guest-stepper">
+        <button type="button" aria-label={t('Decrease guests')} onClick={() => setGuests(value => Math.max(MIN_GUESTS, value - 1))} disabled={guests === MIN_GUESTS}>−</button>
+        <output aria-live="polite">{guests}</output>
+        <button type="button" aria-label={t('Increase guests')} onClick={() => setGuests(value => Math.min(MAX_GUESTS, value + 1))} disabled={guests === MAX_GUESTS}>+</button>
+      </div>
+    </div>
+    <div className="calendar-state">
+      {confirmed ? <div className="availability-confirmation" role="status"><span className="availability-check" aria-hidden="true">✓</span><strong>{t('AVAILABLE')}</strong><span className="booking-direction" aria-hidden="true">↓</span></div> : <div className="legend"><span><i className={state === 'ready' ? '' : 'unknown'}/>{t(state === 'ready' ? 'Available' : 'Unavailable')}</span><span><i className="unavailable"/>{t('Booked')}</span></div>}
+    </div>
   </div>;
 }
