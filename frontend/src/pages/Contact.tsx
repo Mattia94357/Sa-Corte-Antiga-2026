@@ -36,7 +36,7 @@ export function Contact() {
     }
   }
   return <div className="contact-page">
-    <section className="contact-intro"><p className="eyebrow">{t('CONTACT')}</p><h1>{t('Begin your')}<br/><em>{t('Sardinian stay.')}</em></h1><p>{t('Tell us a little about your plans. We’ll be in touch with the details you need.')}</p></section>
+    <section className="contact-intro"><p className="eyebrow">{t('CONTACT')}</p><h1>{t('Plan your')}<br/><em>{t('stay in Sardinia.')}</em></h1><p>{t('Send us your dates or questions and we’ll get back to you.')}</p></section>
     <form ref={formRef} className="contact-form" onSubmit={submit} onInvalid={e => validate(e.target as HTMLInputElement)} onInput={e => {
       const field = e.target;
       if (field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement) field.setCustomValidity('');

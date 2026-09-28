@@ -719,3 +719,28 @@ section[id] { scroll-margin-top: 90px; }
 @media (prefers-reduced-motion: reduce) {
   .booking-direction { animation: none; }
 }
+
+/* Keep the wide Masua landscape cinematic while preserving more of the view. */
+.why-hero {
+  height: min(100svh, 66.667vw);
+  min-height: 720px;
+  overflow: hidden;
+}
+.why-hero > img { object-position: 50% 48%; }
+
+@media (max-width: 1024px) {
+  .why-hero {
+    height: clamp(540px, 72svh, 760px);
+    min-height: 0;
+  }
+  .why-hero > img { object-position: 24% 50%; }
+}
+
+@media (max-width: 767px) {
+  .why-hero {
+    height: clamp(460px, 60svh, 540px);
+    min-height: 0;
+  }
+  .why-hero > img { object-position: 20% 50%; }
+  .why-hero > div { bottom: 54px; }
+}
