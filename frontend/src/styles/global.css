@@ -308,6 +308,13 @@ html[lang="it"] .section h2, html[lang="it"] .contact-intro h1 { overflow-wrap: 
 .early-booking .eyebrow { margin: 0; }
 .early-booking > div > p:last-child { max-width: 540px; margin: 0; line-height: var(--leading-body); }
 .early-booking .booking-links { width: min(52vw,660px); margin: 0; justify-content: flex-start; }
+@media (min-width: 1025px) {
+  .early-booking + .intro {
+    min-height: 0;
+    align-content: start;
+    padding-top: 12px;
+  }
+}
 @media (max-width: 1279px) {
   .early-booking { grid-template-columns: minmax(0,1fr); gap: 28px; }
   .early-booking .booking-links { width: 100%; }
