@@ -1,0 +1,580 @@
+{
+  "/images/HERO sa corte antiga.jpeg": {
+    "width": 1448,
+    "height": 1086,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/sa-corte-antiga/hero-sa-corte-antiga-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/sa-corte-antiga/hero-sa-corte-antiga-1280.webp"
+      },
+      {
+        "width": 1448,
+        "src": "/optimized/sa-corte-antiga/hero-sa-corte-antiga-1448.webp"
+      }
+    ]
+  },
+  "/images/IMG-20240113-WA0009.jpg": {
+    "width": 640,
+    "height": 480,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/images/IMG-20240113-WA0009.jpg"
+      }
+    ]
+  },
+  "/images/IMG-20240113-WA0008.jpg": {
+    "width": 640,
+    "height": 480,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/sa-corte-antiga/img-20240113-wa0008-640.webp"
+      }
+    ]
+  },
+  "/images/Bruno Pan di zucchero.jpg": {
+    "width": 2016,
+    "height": 1512,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/sa-corte-antiga/bruno-pan-di-zucchero-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/sa-corte-antiga/bruno-pan-di-zucchero-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/optimized/sa-corte-antiga/bruno-pan-di-zucchero-1920.webp"
+      }
+    ]
+  },
+  "/images/masua immagine.jpg": {
+    "width": 1920,
+    "height": 1279,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/sa-corte-antiga/masua-immagine-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/sa-corte-antiga/masua-immagine-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/images/masua immagine.jpg"
+      }
+    ]
+  },
+  "/images/jurgen-scheeff-5hEeE1ATUMM-unsplash.jpg": {
+    "width": 4513,
+    "height": 3001,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/sa-corte-antiga/jurgen-scheeff-5heee1atumm-unsplash-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/sa-corte-antiga/jurgen-scheeff-5heee1atumm-unsplash-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/optimized/sa-corte-antiga/jurgen-scheeff-5heee1atumm-unsplash-1920.webp"
+      }
+    ]
+  },
+  "/images/saredgna spiaggia pietre.png": {
+    "width": 498,
+    "height": 924,
+    "variants": [
+      {
+        "width": 498,
+        "src": "/optimized/sa-corte-antiga/saredgna-spiaggia-pietre-498.webp"
+      }
+    ]
+  },
+  "/images/IMG-20240113-WA0007.jpg": {
+    "width": 1600,
+    "height": 1200,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/sa-corte-antiga/img-20240113-wa0007-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/sa-corte-antiga/img-20240113-wa0007-1280.webp"
+      },
+      {
+        "width": 1600,
+        "src": "/images/IMG-20240113-WA0007.jpg"
+      }
+    ]
+  },
+  "/images/IMG-20240113-WA0013.jpg": {
+    "width": 1600,
+    "height": 1200,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/sa-corte-antiga/img-20240113-wa0013-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/sa-corte-antiga/img-20240113-wa0013-1280.webp"
+      },
+      {
+        "width": 1600,
+        "src": "/images/IMG-20240113-WA0013.jpg"
+      }
+    ]
+  },
+  "/images/IMG-20240113-WA0003.jpg": {
+    "width": 1600,
+    "height": 1200,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/sa-corte-antiga/img-20240113-wa0003-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/sa-corte-antiga/img-20240113-wa0003-1280.webp"
+      },
+      {
+        "width": 1600,
+        "src": "/optimized/sa-corte-antiga/img-20240113-wa0003-1600.webp"
+      }
+    ]
+  },
+  "/images/IMG-20240113-WA0012.jpg": {
+    "width": 1200,
+    "height": 1600,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/sa-corte-antiga/img-20240113-wa0012-640.webp"
+      },
+      {
+        "width": 1200,
+        "src": "/optimized/sa-corte-antiga/img-20240113-wa0012-1200.webp"
+      }
+    ]
+  },
+  "/images/IMG-20240113-WA0004.jpg": {
+    "width": 1200,
+    "height": 1600,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/sa-corte-antiga/img-20240113-wa0004-640.webp"
+      },
+      {
+        "width": 1200,
+        "src": "/optimized/sa-corte-antiga/img-20240113-wa0004-1200.webp"
+      }
+    ]
+  },
+  "/images/IMG-20240113-WA0006.jpg": {
+    "width": 1600,
+    "height": 1200,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/sa-corte-antiga/img-20240113-wa0006-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/sa-corte-antiga/img-20240113-wa0006-1280.webp"
+      },
+      {
+        "width": 1600,
+        "src": "/optimized/sa-corte-antiga/img-20240113-wa0006-1600.webp"
+      }
+    ]
+  },
+  "/images/IMG-20240113-WA0005.jpg": {
+    "width": 1200,
+    "height": 1600,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/sa-corte-antiga/img-20240113-wa0005-640.webp"
+      },
+      {
+        "width": 1200,
+        "src": "/optimized/sa-corte-antiga/img-20240113-wa0005-1200.webp"
+      }
+    ]
+  },
+  "/images/IMG-20240113-WA0010.jpg": {
+    "width": 640,
+    "height": 480,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/sa-corte-antiga/img-20240113-wa0010-640.webp"
+      }
+    ]
+  },
+  "/garden house images/outsideviewgardenhouse.png": {
+    "width": 1086,
+    "height": 1448,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/garden-house/outsideviewgardenhouse-640.webp"
+      },
+      {
+        "width": 1086,
+        "src": "/optimized/garden-house/outsideviewgardenhouse-1086.webp"
+      }
+    ]
+  },
+  "/garden house images/seaviewgardenhouse.png": {
+    "width": 923,
+    "height": 1448,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/garden-house/seaviewgardenhouse-640.webp"
+      },
+      {
+        "width": 923,
+        "src": "/optimized/garden-house/seaviewgardenhouse-923.webp"
+      }
+    ]
+  },
+  "/garden house images/IMG20260913094650.jpg": {
+    "width": 3000,
+    "height": 4000,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/garden-house/img20260913094650-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/garden-house/img20260913094650-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/optimized/garden-house/img20260913094650-1920.webp"
+      }
+    ]
+  },
+  "/garden house images/IMG20260913094225.jpg": {
+    "width": 3000,
+    "height": 4000,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/garden-house/img20260913094225-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/garden-house/img20260913094225-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/optimized/garden-house/img20260913094225-1920.webp"
+      }
+    ]
+  },
+  "/garden house images/IMG20260913094213.jpg": {
+    "width": 4000,
+    "height": 3000,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/garden-house/img20260913094213-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/garden-house/img20260913094213-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/optimized/garden-house/img20260913094213-1920.webp"
+      }
+    ]
+  },
+  "/garden house images/IMG20260913094131.jpg": {
+    "width": 3000,
+    "height": 4000,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/garden-house/img20260913094131-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/garden-house/img20260913094131-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/optimized/garden-house/img20260913094131-1920.webp"
+      }
+    ]
+  },
+  "/garden house images/IMG20250922084809.jpg": {
+    "width": 3000,
+    "height": 4000,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/garden-house/img20250922084809-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/garden-house/img20250922084809-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/optimized/garden-house/img20250922084809-1920.webp"
+      }
+    ]
+  },
+  "/garden house images/IMG20250922084744.jpg": {
+    "width": 3000,
+    "height": 4000,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/garden-house/img20250922084744-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/garden-house/img20250922084744-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/optimized/garden-house/img20250922084744-1920.webp"
+      }
+    ]
+  },
+  "/garden house images/IMG20250813185124.jpg": {
+    "width": 3000,
+    "height": 4000,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/garden-house/img20250813185124-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/garden-house/img20250813185124-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/optimized/garden-house/img20250813185124-1920.webp"
+      }
+    ]
+  },
+  "/garden house images/IMG20250813185055.jpg": {
+    "width": 3000,
+    "height": 4000,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/garden-house/img20250813185055-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/garden-house/img20250813185055-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/optimized/garden-house/img20250813185055-1920.webp"
+      }
+    ]
+  },
+  "/garden house images/IMG20250813095355.jpg": {
+    "width": 3000,
+    "height": 4000,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/garden-house/img20250813095355-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/garden-house/img20250813095355-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/optimized/garden-house/img20250813095355-1920.webp"
+      }
+    ]
+  },
+  "/garden house images/IMG20250813095347.jpg": {
+    "width": 3000,
+    "height": 4000,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/garden-house/img20250813095347-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/garden-house/img20250813095347-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/optimized/garden-house/img20250813095347-1920.webp"
+      }
+    ]
+  },
+  "/garden house images/IMG20250813095341.jpg": {
+    "width": 3000,
+    "height": 4000,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/garden-house/img20250813095341-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/garden-house/img20250813095341-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/optimized/garden-house/img20250813095341-1920.webp"
+      }
+    ]
+  },
+  "/garden house images/IMG20250813095254.jpg": {
+    "width": 3000,
+    "height": 4000,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/garden-house/img20250813095254-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/garden-house/img20250813095254-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/optimized/garden-house/img20250813095254-1920.webp"
+      }
+    ]
+  },
+  "/garden house images/IMG20250813095236.jpg": {
+    "width": 3000,
+    "height": 4000,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/garden-house/img20250813095236-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/garden-house/img20250813095236-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/optimized/garden-house/img20250813095236-1920.webp"
+      }
+    ]
+  },
+  "/garden house images/IMG20250813094925.jpg": {
+    "width": 3000,
+    "height": 4000,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/garden-house/img20250813094925-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/garden-house/img20250813094925-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/optimized/garden-house/img20250813094925-1920.webp"
+      }
+    ]
+  },
+  "/garden house images/IMG20250730113619.jpg": {
+    "width": 3000,
+    "height": 4000,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/garden-house/img20250730113619-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/garden-house/img20250730113619-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/optimized/garden-house/img20250730113619-1920.webp"
+      }
+    ]
+  },
+  "/garden house images/IMG20250730113053.jpg": {
+    "width": 3000,
+    "height": 4000,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/garden-house/img20250730113053-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/garden-house/img20250730113053-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/optimized/garden-house/img20250730113053-1920.webp"
+      }
+    ]
+  },
+  "/garden house images/IMG20250730112427.jpg": {
+    "width": 3000,
+    "height": 4000,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/garden-house/img20250730112427-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/garden-house/img20250730112427-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/optimized/garden-house/img20250730112427-1920.webp"
+      }
+    ]
+  },
+  "/garden house images/IMG20250730112427 (1).jpg": {
+    "width": 3000,
+    "height": 4000,
+    "variants": [
+      {
+        "width": 640,
+        "src": "/optimized/garden-house/img20250730112427-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/optimized/garden-house/img20250730112427-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/optimized/garden-house/img20250730112427-1920.webp"
+      }
+    ]
+  }
+}

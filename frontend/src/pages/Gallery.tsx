@@ -1,5 +1,6 @@
 import { useLanguage } from '../i18n/LanguageContext';
 import { Reveal } from '../components/Reveal';
+import { optimizedImage } from '../constants/optimizedImage';
 
 const propertyPhotos = [
   { src: '/images/IMG-20240113-WA0007.jpg', alt: 'Flowering garden and outdoor fireplace at Sa Corte Antiga' },
@@ -22,7 +23,7 @@ export function Gallery() {
     </section>
     <section className="gallery-collection section" aria-label={t("Sa Corte Antiga property photographs")}>
       <div className="gallery-masonry">
-        {propertyPhotos.map((photo) => <Reveal className="gallery-item" key={photo.src}><img src={photo.src} alt={t(photo.alt)} loading="lazy"/></Reveal>)}
+        {propertyPhotos.map((photo) => <Reveal className="gallery-item" key={photo.src}><img {...optimizedImage(photo.src, '(max-width: 767px) 90vw, (max-width: 1024px) 45vw, 30vw')} alt={t(photo.alt)} loading="lazy" decoding="async"/></Reveal>)}
       </div>
     </section>
   </div>;

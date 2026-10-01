@@ -2,6 +2,7 @@ import { useLanguage } from '../i18n/LanguageContext';
 import { GardenHouseNav } from '../components/GardenHouseNav';
 import { Reveal } from '../components/Reveal';
 import { gardenHousePhotos } from '../constants/gardenHouseImages';
+import { optimizedImage } from '../constants/optimizedImage';
 
 export function GardenHouseGallery() {
   const { t } = useLanguage();
@@ -12,7 +13,7 @@ export function GardenHouseGallery() {
     </section>
     <section className="gallery-collection section" aria-label={t("Garden House photographs")}>
       <div className="gallery-masonry garden-house-masonry">
-        {gardenHousePhotos.map((photo) => <Reveal className="gallery-item" key={photo.src}><img src={photo.src} alt={t(photo.alt)} loading="lazy"/></Reveal>)}
+        {gardenHousePhotos.map((photo) => <Reveal className="gallery-item" key={photo.src}><img {...optimizedImage(photo.src, '(max-width: 767px) 90vw, (max-width: 1024px) 45vw, 30vw')} alt={t(photo.alt)} loading="lazy" decoding="async"/></Reveal>)}
       </div>
     </section>
   </div>;
