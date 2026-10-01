@@ -22,9 +22,16 @@ export function LanguageProvider({ children }: PropsWithChildren) {
       : 'Sa Corte Antiga — a refined Mediterranean stay in Nebida, Sardinia.');
     try { localStorage.setItem(storageKey, language); } catch { /* Language switching also works without storage. */ }
   }, [language]);
-  const t = (text: string) => language === 'it'
-    ? text.replace(/\S(?:[\s\S]*\S)?/, value => italian[value] ?? value)
-    : text;
+  const t = (text: string) => {
+    if (language === 'en' || !text.trim()) return text;
+    const key = text.trim();
+    const translation = italian[key];
+    if (translation === undefined) {
+      if (import.meta.env.DEV) console.error(`Missing Italian translation: ${key}`);
+      return text.replace(key, 'Traduzione non disponibile');
+    }
+    return text.replace(key, translation);
+  };
   return <LanguageContext.Provider value={{ language, locale: language === 'it' ? 'it-IT' : 'en-GB', setLanguage, t }}>{children}</LanguageContext.Provider>;
 }
 

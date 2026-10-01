@@ -18,7 +18,7 @@ export function Gallery() {
   const { t } = useLanguage();
   return <div className="gallery-page">
     <section className="gallery-hero">
-      <div><p>{t("THE HOUSE")}</p><h1>{t("GALLERY")}</h1><span>{t("See the garden, terrace and rooms at Sa Corte Antiga.")}</span></div>
+      <div><p>{t("THE HOUSE")}</p><h1>{t("Gallery")}</h1><span>{t("Take a closer look at Sa Corte Antiga, inside and out.")}</span></div>
     </section>
     <section className="gallery-collection section" aria-label={t("Sa Corte Antiga property photographs")}>
       <div className="gallery-masonry">

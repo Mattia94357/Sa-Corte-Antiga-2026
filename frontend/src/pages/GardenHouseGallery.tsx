@@ -8,7 +8,7 @@ export function GardenHouseGallery() {
   return <div className="garden-house-gallery-page">
     <section className="garden-house-gallery-hero">
       <GardenHouseNav/>
-      <div><p>GARDEN HOUSE</p><h1>{t("GALLERY")}</h1><span>{t("A first look at Garden House.")}</span></div>
+      <div><p>GARDEN HOUSE</p><h1>{t("Gallery")}</h1><span>{t("A first look at Garden House, inside and out.")}</span></div>
     </section>
     <section className="gallery-collection section" aria-label={t("Garden House photographs")}>
       <div className="gallery-masonry garden-house-masonry">

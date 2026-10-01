@@ -89,7 +89,7 @@ export function Calendar() {
     return () => { active = false; };
   }, []);
 
-  const status = state === 'loading' ? 'Loading availability…' : state === 'ready' ? 'Availability updated from Airbnb' : 'Availability temporarily unavailable';
+  const status = state === 'loading' ? 'Loading availability…' : state === 'ready' ? 'Available' : 'Availability temporarily unavailable';
   const firstMonth = new Date(start.getFullYear(), start.getMonth() + offset, 1);
   const secondMonth = new Date(firstMonth.getFullYear(), firstMonth.getMonth() + 1, 1);
   const rangeIsAvailable = (rangeStart: string, rangeEnd: string) => {
@@ -121,7 +121,7 @@ export function Calendar() {
       </div>
     </div>
     <div className="calendar-state">
-      {confirmed ? <div className="availability-confirmation" role="status"><span className="availability-check" aria-hidden="true">✓</span><strong>{t('AVAILABLE')}</strong><span className="booking-direction" aria-hidden="true">↓</span></div> : <div className="legend"><span><i className={state === 'ready' ? '' : 'unknown'}/>{t(state === 'ready' ? 'Available' : 'Unavailable')}</span><span><i className="unavailable"/>{t('Booked')}</span></div>}
+      {confirmed ? <div className="availability-confirmation" role="status"><span className="availability-check" aria-hidden="true">✓</span><strong>{t('Available')}</strong><span className="booking-direction" aria-hidden="true">↓</span></div> : <div className="legend"><span><i className={state === 'ready' ? '' : 'unknown'}/>{t(state === 'ready' ? 'Available' : 'Unavailable')}</span><span><i className="unavailable"/>{t('Booked')}</span></div>}
     </div>
   </div>;
 }
