@@ -1,1 +1,36 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#f4efe5"/><meta name="description" content="Sa Corte Antiga — a refined Mediterranean stay in Nebida, Sardinia."/><title>Sa Corte Antiga · Nebida, Sardegna</title><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Lora:ital,wght@0,500;1,500&display=swap" rel="stylesheet"/></head><body><div id="root"></div><script type="module" src="/src/main.tsx"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="theme-color" content="#f4efe5"/>
+  <meta name="description" content="Sa Corte Antiga — a refined Mediterranean stay in Nebida, Sardinia."/>
+  <title>Sa Corte Antiga · Nebida, Sardegna</title>
+  <script>
+    (() => {
+      try {
+        if (localStorage.getItem('sa-corte-antiga-language') === 'it') document.documentElement.lang = 'it';
+      } catch { /* Storage may be unavailable; React defaults to English. */ }
+      const heroes = {
+        '/': ['/optimized/sa-corte-antiga/hero-sa-corte-antiga-1448.webp', '/optimized/sa-corte-antiga/hero-sa-corte-antiga-640.webp 640w, /optimized/sa-corte-antiga/hero-sa-corte-antiga-1280.webp 1280w, /optimized/sa-corte-antiga/hero-sa-corte-antiga-1448.webp 1448w', '(max-width: 767px) 800px, (max-width: 1024px) 1100px, 100vw'],
+        '/why-sa-corte-antiga': ['/images/masua%20immagine.jpg', '/optimized/sa-corte-antiga/masua-immagine-640.webp 640w, /optimized/sa-corte-antiga/masua-immagine-1280.webp 1280w, /images/masua%20immagine.jpg 1920w', '(max-width: 767px) 800px, 100vw'],
+        '/garden-house': ['/optimized/garden-house/outsideviewgardenhouse-1086.webp', '/optimized/garden-house/outsideviewgardenhouse-640.webp 640w, /optimized/garden-house/outsideviewgardenhouse-1086.webp 1086w', '(max-width: 767px) 700px, 100vw']
+      };
+      const hero = heroes[location.pathname];
+      if (!hero) return;
+      const preload = document.createElement('link');
+      preload.rel = 'preload';
+      preload.as = 'image';
+      preload.href = hero[0];
+      preload.imageSrcset = hero[1];
+      preload.imageSizes = hero[2];
+      preload.fetchPriority = 'high';
+      document.head.append(preload);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Lora:ital,wght@0,500;1,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+</head>
+<body><div id="root"></div><script type="module" src="/src/main.tsx"></script></body>
+</html>

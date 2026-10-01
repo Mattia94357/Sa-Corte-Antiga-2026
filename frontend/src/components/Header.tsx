@@ -14,7 +14,7 @@ function GardenHouseMark() {
 export function Header() {
   const { t } = useLanguage();
   const [menu, setMenu] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(() => typeof window !== 'undefined' && window.scrollY > 12);
   const [hidden, setHidden] = useState(false);
   const lastScrollY = useRef(0);
   const heroVisible = useRef(false);
