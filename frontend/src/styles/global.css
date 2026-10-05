@@ -727,6 +727,24 @@ section[id] { scroll-margin-top: 90px; }
   overflow: hidden;
 }
 .why-hero > img { object-position: 50% 48%; }
+.why-hero > div {
+  left: 6vw;
+  right: auto;
+  bottom: clamp(40px, 6vh, 72px);
+  width: min(620px, 62vw);
+}
+.why-hero h1 {
+  font-size: clamp(48px, 4.4vw, 68px);
+  line-height: 1.08;
+  margin: 16px 0 0;
+  text-wrap: balance;
+}
+/* Keep the real Nebida coastline in view and crop out the source photo's bottom badge. */
+.hike-feature > img {
+  height: auto;
+  aspect-ratio: 1;
+  object-position: 50% 35%;
+}
 
 @media (max-width: 1024px) {
   .why-hero {
@@ -742,5 +760,15 @@ section[id] { scroll-margin-top: 90px; }
     min-height: 0;
   }
   .why-hero > img { object-position: 20% 50%; }
-  .why-hero > div { bottom: 54px; }
+  .why-hero > div {
+    left: 6vw;
+    right: auto;
+    bottom: 32px;
+    width: min(340px, 88vw);
+  }
+  .why-hero h1 {
+    font-size: clamp(32px, 8.5vw, 42px);
+    line-height: 1.12;
+    margin-top: 12px;
+  }
 }

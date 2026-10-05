@@ -1,5 +1,6 @@
 // English copy is the source key, preserving the original default language.
 export const italian: Readonly<Record<string, string>> = {
+  "Nebida and the coast overlooking Pan di Zucchero at sunset": "Nebida e la costa con vista sul Pan di Zucchero al tramonto",
   "BOOK YOUR STAY": "PRENOTA IL TUO SOGGIORNO",
   "Book Sa Corte Antiga": "Prenota a Sa Corte Antiga",
   "Check availability and complete your reservation with one of our trusted booking partners.": "Verifica la disponibilità e prenota tramite una delle nostre piattaforme partner di fiducia.",

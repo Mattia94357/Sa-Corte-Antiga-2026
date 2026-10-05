@@ -45,7 +45,7 @@ export function Home() {
         <div className="house-gallery-intro"><p>{t("Take a look at the house and outdoor spaces.")}</p><Link className="text-link" to="/gallery">{t("View the full gallery")}</Link></div>
       </Reveal>
       <div className="house-gallery-track">
-        <Reveal className="house-gallery-image"><img {...optimizedImage('/images/IMG-20240113-WA0008.jpg', '(max-width: 1024px) 90vw, 75vw')} alt={t("Shaded terrace and outdoor table at Sa Corte Antiga")} loading="lazy" decoding="async"/></Reveal>
+        <Reveal className="house-gallery-image"><img {...optimizedImage('/images/IMG-20240113-WA0007.jpg', '(max-width: 1024px) 90vw, 75vw')} alt={t("Flowering garden and outdoor fireplace at Sa Corte Antiga")} loading="lazy" decoding="async"/></Reveal>
       </div>
     </section>
     <section className="availability section" id="availability"><Reveal><div className="section-heading"><div><p className="eyebrow">{t("PLAN YOUR STAY")}</p><h2>{t("Check ")}<em>{t("availability")}</em></h2></div><p>{t("Choose your dates and number of guests. If the dates are available, continue with the booking platform you prefer.")}</p></div></Reveal><Calendar/><BookingLinks/></section>
