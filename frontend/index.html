@@ -4,19 +4,23 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <meta name="theme-color" content="#f4efe5"/>
-  <meta name="description" content="Sa Corte Antiga — a refined Mediterranean stay in Nebida, Sardinia."/>
-  <title>Sa Corte Antiga · Nebida, Sardegna</title>
+  <!-- SEO:START -->
+  <!-- Route metadata is generated from src/seo/metadata.ts by Vite. -->
+  <!-- SEO:END -->
+  <!-- Search Console URL-prefix verification: add Google's real google-site-verification meta tag here. -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
   <script>
     (() => {
       try {
         if (localStorage.getItem('sa-corte-antiga-language') === 'it') document.documentElement.lang = 'it';
       } catch { /* Storage may be unavailable; React defaults to English. */ }
       const heroes = {
-        '/': ['/optimized/sa-corte-antiga/hero-sa-corte-antiga-1448.webp', '/optimized/sa-corte-antiga/hero-sa-corte-antiga-640.webp 640w, /optimized/sa-corte-antiga/hero-sa-corte-antiga-1280.webp 1280w, /optimized/sa-corte-antiga/hero-sa-corte-antiga-1448.webp 1448w', '(max-width: 767px) 800px, (max-width: 1024px) 1100px, 100vw'],
+        '/': ['/optimized/sa-corte-antiga/hero-sa-corte-antiga-1448.webp', '/optimized/sa-corte-antiga/hero-sa-corte-antiga-1448.webp 1448w', '(max-width: 767px) 800px, (max-width: 1024px) 1100px, 100vw'],
         '/why-sa-corte-antiga': ['/images/masua%20immagine.jpg', '/optimized/sa-corte-antiga/masua-immagine-640.webp 640w, /optimized/sa-corte-antiga/masua-immagine-1280.webp 1280w, /images/masua%20immagine.jpg 1920w', '(max-width: 767px) 800px, 100vw'],
         '/garden-house': ['/optimized/garden-house/outsideviewgardenhouse-1086.webp', '/optimized/garden-house/outsideviewgardenhouse-640.webp 640w, /optimized/garden-house/outsideviewgardenhouse-1086.webp 1086w', '(max-width: 767px) 700px, 100vw']
       };
-      const hero = heroes[location.pathname];
+      const hero = heroes[location.pathname.replace(/\/+$/, '').toLowerCase() || '/'];
       if (!hero) return;
       const preload = document.createElement('link');
       preload.rel = 'preload';

@@ -1,5 +1,13 @@
 // English copy is the source key, preserving the original default language.
 export const italian: Readonly<Record<string, string>> = {
+  "Outdoor sink on the Garden House terrace": "Lavandino esterno sulla terrazza di Garden House",
+  "Television and cabinet in the Garden House living room": "Televisore e mobile nel soggiorno di Garden House",
+  "Kitchen counter and stove at Garden House": "Piano della cucina e fornelli di Garden House",
+  "Toilet, bidet and sink in the Garden House bathroom": "WC, bidet e lavandino nel bagno di Garden House",
+  "Washing machine beside the Garden House bedroom window": "Lavatrice accanto alla finestra della camera di Garden House",
+  "Double bed, dresser and wardrobe in the Garden House bedroom": "Letto matrimoniale, cassettiera e armadio nella camera di Garden House",
+  "Page not found": "Pagina non trovata",
+  "The requested page is unavailable.": "La pagina richiesta non è disponibile.",
   "Nebida and the coast overlooking Pan di Zucchero at sunset": "Nebida e la costa con vista sul Pan di Zucchero al tramonto",
   "BOOK YOUR STAY": "PRENOTA IL TUO SOGGIORNO",
   "Book Sa Corte Antiga": "Prenota a Sa Corte Antiga",

@@ -17,9 +17,6 @@ export function LanguageProvider({ children }: PropsWithChildren) {
   });
   useEffect(() => {
     document.documentElement.lang = language;
-    document.querySelector('meta[name="description"]')?.setAttribute('content', language === 'it'
-      ? 'Sa Corte Antiga — un raffinato soggiorno mediterraneo a Nebida, in Sardegna.'
-      : 'Sa Corte Antiga — a refined Mediterranean stay in Nebida, Sardinia.');
     try { localStorage.setItem(storageKey, language); } catch { /* Language switching also works without storage. */ }
   }, [language]);
   const t = (text: string) => {

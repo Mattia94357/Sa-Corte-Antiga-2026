@@ -1,6 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
+    { "source": "/why-sa-corte-antiga", "destination": "/why-sa-corte-antiga/index.html" },
+    { "source": "/gallery", "destination": "/gallery/index.html" },
+    { "source": "/contact", "destination": "/contact/index.html" },
+    { "source": "/garden-house", "destination": "/garden-house/index.html" },
+    { "source": "/garden-house/gallery", "destination": "/garden-house/gallery/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

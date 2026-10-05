@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sacorteantiga.com/sitemap.xml
