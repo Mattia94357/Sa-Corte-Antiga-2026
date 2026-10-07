@@ -1,6 +1,6 @@
 import { useLanguage } from '../i18n/LanguageContext';
 import { LanguageSwitcher } from './LanguageSwitcher';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m as motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 
@@ -52,7 +52,8 @@ export function Header() {
     setScrolled(lastScrollY.current > 12);
     setHidden(false);
     const hero = document.querySelector<HTMLElement>('main .hero, main .page-hero, main .garden-house-hero, main .gallery-hero, main .garden-house-gallery-hero');
-    heroVisible.current = Boolean(hero && hero.getBoundingClientRect().bottom > 0);
+    // The observer supplies visibility after layout; avoid a duplicate synchronous layout read.
+    heroVisible.current = Boolean(hero);
     const heroObserver = hero ? new IntersectionObserver(([entry]) => {
       const visible = Boolean(entry?.isIntersecting);
       heroVisible.current = visible;

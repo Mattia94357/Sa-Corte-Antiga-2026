@@ -18,6 +18,14 @@
         "src": "/optimized/sa-corte-antiga/hero-sa-corte-antiga-640.webp"
       },
       {
+        "width": 768,
+        "src": "/optimized/sa-corte-antiga/hero-sa-corte-antiga-768.webp"
+      },
+      {
+        "width": 1024,
+        "src": "/optimized/sa-corte-antiga/hero-sa-corte-antiga-1024.webp"
+      },
+      {
         "width": 1280,
         "src": "/optimized/sa-corte-antiga/hero-sa-corte-antiga-1280.webp"
       },
@@ -33,7 +41,7 @@
     "variants": [
       {
         "width": 640,
-        "src": "/images/IMG-20240113-WA0009.jpg"
+        "src": "/optimized/sa-corte-antiga/img-20240113-wa0009-640.webp"
       }
     ]
   },
@@ -118,6 +126,10 @@
       {
         "width": 640,
         "src": "/optimized/sa-corte-antiga/img-20240113-wa0007-640.webp"
+      },
+      {
+        "width": 768,
+        "src": "/optimized/sa-corte-antiga/img-20240113-wa0007-768.webp"
       },
       {
         "width": 1280,

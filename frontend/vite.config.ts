@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { applySeoToHtml, normalizePath, PUBLIC_ROUTES } from './src/seo/metadata';
+import { homeHeroPreloads } from './src/constants/homeImageDelivery';
 
 function routeSeo(): Plugin {
   let outputDirectory: string;
@@ -15,7 +16,10 @@ function routeSeo(): Plugin {
     },
     transformIndexHtml: {
       order: 'pre',
-      handler(html, context) { return applySeoToHtml(html, context.originalUrl ?? '/'); },
+      handler(html, context) {
+        const withHeroPreload = html.replace('/* HOME_HERO_PRELOADS */ []', JSON.stringify(homeHeroPreloads));
+        return applySeoToHtml(withHeroPreload, context.originalUrl ?? '/');
+      },
     },
     configurePreviewServer(server) {
       // Match the explicit Vercel rewrites when checking built HTML locally.

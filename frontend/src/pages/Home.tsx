@@ -1,15 +1,17 @@
 import { useLanguage } from '../i18n/LanguageContext';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { m as motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useRef } from 'react';
 import { Calendar } from '../components/Calendar';
 import { Reveal } from '../components/Reveal';
 import { BookingLinks } from '../components/BookingLinks';
 import { optimizedImage } from '../constants/optimizedImage';
+import { homeHeroAvif, homeHeroFallback } from '../constants/homeImageDelivery';
 
 export function Home() {
   const { t } = useLanguage();
   const hero = useRef<HTMLElement>(null);
+  const reducedMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: hero, offset: ['start start', 'end start'] });
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.09]);
   const y = useTransform(scrollYProgress, [0, 1], [0, 90]);
@@ -18,9 +20,12 @@ export function Home() {
 
   return <>
     <section className="hero" ref={hero}>
-      <motion.img className="hero-image" {...optimizedImage('/images/HERO sa corte antiga.jpeg', '(max-width: 767px) 800px, (max-width: 1024px) 1100px, 100vw')} alt={t("Shaded terrace and outdoor table at Sa Corte Antiga")} loading="eager" fetchPriority="high" style={{ scale }}/>
+      <picture>
+        <source media={homeHeroAvif.media} type={homeHeroAvif.type} srcSet={homeHeroAvif.srcSet} sizes={homeHeroAvif.sizes}/>
+        <motion.img className="hero-image" {...homeHeroFallback} alt={t("Shaded terrace and outdoor table at Sa Corte Antiga")} loading="eager" fetchPriority="high" decoding="async" style={{ scale: reducedMotion ? 1 : scale }}/>
+      </picture>
       <div className="hero-shade"/>
-      <motion.div className="hero-copy" style={{ y, opacity: fade }}>
+      <motion.div className="hero-copy" style={{ y: reducedMotion ? 0 : y, opacity: fade }}>
         <p>Nebida · Sardegna</p>
         <h1>SA CORTE<br/>ANTIGA</h1>
         <span>{t("A peaceful and private stay in the heart of South-West Sardinia.")}</span>
@@ -45,7 +50,7 @@ export function Home() {
         <div className="house-gallery-intro"><p>{t("Take a look at the house and outdoor spaces.")}</p><Link className="text-link" to="/gallery">{t("View the full gallery")}</Link></div>
       </Reveal>
       <div className="house-gallery-track">
-        <Reveal className="house-gallery-image"><img {...optimizedImage('/images/IMG-20240113-WA0007.jpg', '(max-width: 1024px) 90vw, 75vw')} alt={t("Flowering garden and outdoor fireplace at Sa Corte Antiga")} loading="lazy" decoding="async"/></Reveal>
+        <Reveal className="house-gallery-image"><img {...optimizedImage('/images/IMG-20240113-WA0007.jpg', '(max-width: 767px) 80vw, (max-width: 1024px) calc(100vw - 72px), 84vw')} alt={t("Flowering garden and outdoor fireplace at Sa Corte Antiga")} loading="lazy" decoding="async"/></Reveal>
       </div>
     </section>
     <section className="availability section" id="availability"><Reveal><div className="section-heading"><div><p className="eyebrow">{t("PLAN YOUR STAY")}</p><h2>{t("Check ")}<em>{t("availability")}</em></h2></div><p>{t("Choose your dates and number of guests. If the dates are available, continue with the booking platform you prefer.")}</p></div></Reveal><Calendar/><BookingLinks/></section>

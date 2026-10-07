@@ -15,12 +15,28 @@
       try {
         if (localStorage.getItem('sa-corte-antiga-language') === 'it') document.documentElement.lang = 'it';
       } catch { /* Storage may be unavailable; React defaults to English. */ }
+      const homePreloads = /* HOME_HERO_PRELOADS */ [];
+      const path = location.pathname.replace(/\/+$/, '').toLowerCase() || '/';
+      if (path === '/') {
+        for (const hero of homePreloads) {
+          const preload = document.createElement('link');
+          preload.rel = 'preload';
+          preload.as = 'image';
+          preload.type = hero.type;
+          preload.media = hero.media;
+          preload.href = hero.src;
+          preload.imageSrcset = hero.srcSet;
+          preload.imageSizes = hero.sizes;
+          preload.fetchPriority = 'high';
+          document.head.append(preload);
+        }
+        return;
+      }
       const heroes = {
-        '/': ['/optimized/sa-corte-antiga/hero-sa-corte-antiga-1448.webp', '/optimized/sa-corte-antiga/hero-sa-corte-antiga-1448.webp 1448w', '(max-width: 767px) 800px, (max-width: 1024px) 1100px, 100vw'],
         '/why-sa-corte-antiga': ['/images/masua%20immagine.jpg', '/optimized/sa-corte-antiga/masua-immagine-640.webp 640w, /optimized/sa-corte-antiga/masua-immagine-1280.webp 1280w, /images/masua%20immagine.jpg 1920w', '(max-width: 767px) 800px, 100vw'],
         '/garden-house': ['/optimized/garden-house/outsideviewgardenhouse-1086.webp', '/optimized/garden-house/outsideviewgardenhouse-640.webp 640w, /optimized/garden-house/outsideviewgardenhouse-1086.webp 1086w', '(max-width: 767px) 700px, 100vw']
       };
-      const hero = heroes[location.pathname.replace(/\/+$/, '').toLowerCase() || '/'];
+      const hero = heroes[path];
       if (!hero) return;
       const preload = document.createElement('link');
       preload.rel = 'preload';
