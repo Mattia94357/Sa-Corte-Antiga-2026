@@ -6,7 +6,7 @@ import { Calendar } from '../components/Calendar';
 import { Reveal } from '../components/Reveal';
 import { BookingLinks } from '../components/BookingLinks';
 import { optimizedImage } from '../constants/optimizedImage';
-import { homeHeroAvif, homeHeroFallback } from '../constants/homeImageDelivery';
+import { homeHeroSources, homeHeroFallback } from '../constants/homeImageDelivery';
 
 export function Home() {
   const { t } = useLanguage();
@@ -21,7 +21,7 @@ export function Home() {
   return <>
     <section className="hero" ref={hero}>
       <picture>
-        <source media={homeHeroAvif.media} type={homeHeroAvif.type} srcSet={homeHeroAvif.srcSet} sizes={homeHeroAvif.sizes}/>
+        {homeHeroSources.map(source => <source key={source.media + source.type} media={source.media} type={source.type} srcSet={source.srcSet} sizes={source.sizes}/>)}
         <motion.img className="hero-image" {...homeHeroFallback} alt={t("Shaded terrace and outdoor table at Sa Corte Antiga")} loading="eager" fetchPriority="high" decoding="async" style={{ scale: reducedMotion ? 1 : scale }}/>
       </picture>
       <div className="hero-shade"/>

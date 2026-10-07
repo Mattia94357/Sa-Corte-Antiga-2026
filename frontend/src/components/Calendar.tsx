@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { getAvailability, type BlockedRange } from '../services/api';
 
@@ -72,21 +72,36 @@ export function Calendar() {
   const [state, setState] = useState<AvailabilityState>('loading');
   const [selection, setSelection] = useState<DateSelection>({ start: null, end: null });
   const [guests, setGuests] = useState(2);
+  const shell = useRef<HTMLDivElement>(null);
+  const availabilityRequest = useRef<ReturnType<typeof getAvailability> | null>(null);
 
   useEffect(() => {
     let active = true;
-    getAvailability()
-      .then(data => {
-        if (!active) return;
-        setBooked(expandRanges(data.blockedRanges));
-        setState('ready');
-      })
-      .catch(() => {
-        if (!active) return;
-        setBooked(new Set());
-        setState('error');
-      });
-    return () => { active = false; };
+    let observer: IntersectionObserver | undefined;
+    const load = () => {
+      observer?.disconnect();
+      // Reuse the request if an effect is reattached; unknown dates stay disabled.
+      availabilityRequest.current ??= getAvailability();
+      availabilityRequest.current
+        .then(data => {
+          if (!active) return;
+          setBooked(expandRanges(data.blockedRanges));
+          setState('ready');
+        })
+        .catch(() => {
+          if (!active) return;
+          setBooked(new Set());
+          setState('error');
+        });
+    };
+    if (availabilityRequest.current || !('IntersectionObserver' in window)) load();
+    else if (shell.current) {
+      observer = new IntersectionObserver(entries => {
+        if (active && entries.some(entry => entry.isIntersecting)) load();
+      }, { rootMargin: '800px 0px', threshold: 0 });
+      observer.observe(shell.current);
+    }
+    return () => { active = false; observer?.disconnect(); };
   }, []);
 
   const status = state === 'loading' ? 'Loading availability…' : state === 'ready' ? 'Available' : 'Availability temporarily unavailable';
@@ -109,7 +124,7 @@ export function Calendar() {
   };
   const confirmed = Boolean(selection.start && selection.end && rangeIsAvailable(selection.start, selection.end));
 
-  return <div className={`calendar-shell availability-${state}`} aria-busy={state === 'loading'}>
+  return <div ref={shell} className={`calendar-shell availability-${state}`} aria-busy={state === 'loading'}>
     <div className="calendar-toolbar"><p aria-live="polite">{t(status)}</p><div><button aria-label={t('Previous month')} onClick={() => setOffset(Math.max(0, offset - 1))} disabled={offset === 0}>←</button><button aria-label={t('Next month')} onClick={() => setOffset(offset + 1)}>→</button></div></div>
     <div className="calendar-grid"><Month date={firstMonth} booked={booked} state={state} selection={selection} onSelect={selectDate}/><Month date={secondMonth} booked={booked} state={state} selection={selection} onSelect={selectDate}/></div>
     <div className="guest-selector">
