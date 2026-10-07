@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <!-- HOME_HERO_PRELOAD:START -->
+  <!-- Responsive homepage preloads are generated from homeImageDelivery.ts. -->
+  <!-- HOME_HERO_PRELOAD:END -->
   <meta name="theme-color" content="#f4efe5"/>
   <!-- SEO:START -->
   <!-- Route metadata is generated from src/seo/metadata.ts by Vite. -->
@@ -15,23 +18,8 @@
       try {
         if (localStorage.getItem('sa-corte-antiga-language') === 'it') document.documentElement.lang = 'it';
       } catch { /* Storage may be unavailable; React defaults to English. */ }
-      const homePreloads = /* HOME_HERO_PRELOADS */ [];
       const path = location.pathname.replace(/\/+$/, '').toLowerCase() || '/';
-      if (path === '/') {
-        for (const hero of homePreloads) {
-          const preload = document.createElement('link');
-          preload.rel = 'preload';
-          preload.as = 'image';
-          preload.type = hero.type;
-          preload.media = hero.media;
-          preload.href = hero.src;
-          preload.imageSrcset = hero.srcSet;
-          preload.imageSizes = hero.sizes;
-          preload.fetchPriority = 'high';
-          document.head.append(preload);
-        }
-        return;
-      }
+      if (path === '/') return; // The HTML preload scanner handles the homepage hero.
       const heroes = {
         '/why-sa-corte-antiga': ['/images/masua%20immagine.jpg', '/optimized/sa-corte-antiga/masua-immagine-640.webp 640w, /optimized/sa-corte-antiga/masua-immagine-1280.webp 1280w, /images/masua%20immagine.jpg 1920w', '(max-width: 767px) 800px, 100vw'],
         '/garden-house': ['/optimized/garden-house/outsideviewgardenhouse-1086.webp', '/optimized/garden-house/outsideviewgardenhouse-640.webp 640w, /optimized/garden-house/outsideviewgardenhouse-1086.webp 1086w', '(max-width: 767px) 700px, 100vw']
