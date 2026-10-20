@@ -1,6 +1,6 @@
 import { EXTERNAL_LINKS } from '../constants/links';
 
-export const SITE_ORIGIN = 'https://sacorteantiga.com';
+export const SITE_ORIGIN = 'https://www.sacorteantiga.com';
 export type SeoLanguage = 'en' | 'it';
 type Copy = { title: string; description: string };
 type Page = { en: Copy; it: Copy; gardenHouse?: boolean; gallery?: boolean; contact?: boolean };

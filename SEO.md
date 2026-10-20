@@ -1,6 +1,6 @@
 # Sa Corte Antiga technical SEO report
 
-Implemented for `https://sacorteantiga.com`. This is a source/build optimization pass; no production deployment, Search Console registration or DNS change was performed. Approved public-page copy, layout, spacing, typography, colors, original photographs, booking links, calendar/iCal logic and backend behavior were preserved.
+Implemented for `https://www.sacorteantiga.com`. The existing bare-domain redirect to www is retained. This is a source/build optimization pass; no production deployment, Search Console registration or DNS change was performed. Approved public-page copy, layout, spacing, typography, colors, original photographs, booking links, calendar/iCal logic and backend behavior were preserved.
 
 ## 1. Files changed
 
@@ -48,7 +48,7 @@ Each route has a unique description in each language. Exact copy:
 
 ## 4. Canonical strategy and social metadata
 
-Each public route has one self-referencing canonical using only `https://sacorteantiga.com`. The root ends in `/`; other canonical paths have no trailing slash. Query strings and hashes are excluded. Switching language retains the same canonical because the languages share a route.
+Each public route has one self-referencing canonical using only `https://www.sacorteantiga.com`. The root ends in `/`; other canonical paths have no trailing slash. Query strings and hashes are excluded. Switching language retains the same canonical because the languages share a route.
 
 Open Graph title, description, type (`website`), URL, image, dimensions, image alt, site name and locale are supplied. Twitter/X uses `summary_large_image` with matching title, description, image and image alt. All canonical and social URLs are absolute production URLs.
 
@@ -64,7 +64,7 @@ Source: `frontend/public/robots.txt`. Published path: `/robots.txt`.
 User-agent: *
 Allow: /
 
-Sitemap: https://sacorteantiga.com/sitemap.xml
+Sitemap: https://www.sacorteantiga.com/sitemap.xml
 ```
 
 No public routes, styles, scripts or images are blocked, and no private calendar/API URLs are exposed.
@@ -140,10 +140,10 @@ Remaining limitations:
 ## 13. Exact Google Search Console next steps
 
 1. Deploy this frontend build to the production Vercel project with root directory `frontend` and output directory `dist`. Retain the existing production environment values and API/calendar configuration.
-2. Verify all six HTTPS URLs return the intended pages on direct load and refresh. Inspect their initial HTML for unique metadata and self-referencing canonicals. Verify `/robots.txt`, `/sitemap.xml`, `/favicon.png` and `/apple-touch-icon.png`. Check production headers for unexpected `X-Robots-Tag: noindex` and confirm the primary host is `https://sacorteantiga.com`.
+2. Verify all six HTTPS URLs return the intended pages on direct load and refresh. Inspect their initial HTML for unique metadata and self-referencing canonicals. Verify `/robots.txt`, `/sitemap.xml`, `/favicon.png` and `/apple-touch-icon.png`. Check production headers for unexpected `X-Robots-Tag: noindex` and confirm the primary host is `https://www.sacorteantiga.com`. Keep the bare-domain redirect to www.
 3. In Google Search Console, add a **Domain** property for `sacorteantiga.com`. Copy Google's actual issued TXT record into the DNS provider for the apex domain (usually host/name `@`; follow the provider's conventions). Keep that record in place, then click **Verify** after DNS propagation. No fake token or DNS change was added by this task.
-4. Alternative: add a **URL-prefix** property for `https://sacorteantiga.com/`. Put Google's issued `<meta name="google-site-verification" content="REAL_TOKEN_FROM_GOOGLE">` in `frontend/index.html` inside `<head>`, immediately after `<!-- SEO:END -->` at the existing Search Console comment. Keep it outside the generated SEO markers so the build preserves it. Rebuild, deploy and verify. The example is documentation only; no placeholder verification tag is shipped.
-5. Open **Sitemaps** for the verified property and submit `https://sacorteantiga.com/sitemap.xml`.
+4. Alternative: add a **URL-prefix** property for `https://www.sacorteantiga.com/`. Put Google's issued `<meta name="google-site-verification" content="REAL_TOKEN_FROM_GOOGLE">` in `frontend/index.html` inside `<head>`, immediately after `<!-- SEO:END -->` at the existing Search Console comment. Keep it outside the generated SEO markers so the build preserves it. Rebuild, deploy and verify. The example is documentation only; no placeholder verification tag is shipped.
+5. Open **Sitemaps** for the verified property and submit `https://www.sacorteantiga.com/sitemap.xml`.
 6. Use **URL Inspection** and **Test live URL** on the homepage and the other five routes. Confirm crawl access, rendered content and the declared canonical. Request indexing for the desired public pages once the live checks pass.
 7. Monitor **Page indexing** and sitemap processing. Use [Schema.org Validator](https://validator.schema.org/) to inspect the live JSON-LD; Google's Rich Results Test may not offer a dedicated rich result for general LodgingBusiness markup.
 

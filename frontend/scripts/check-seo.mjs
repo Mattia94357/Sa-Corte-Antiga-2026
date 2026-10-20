@@ -4,13 +4,14 @@ import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-const origin = 'https://sacorteantiga.com';
+const origin = 'https://www.sacorteantiga.com';
 const routes = ['/', '/why-sa-corte-antiga', '/gallery', '/contact', '/garden-house', '/garden-house/gallery'];
 const titles = new Set(), descriptions = new Set();
 const configuration = JSON.parse(await readFile(resolve(root, 'vercel.json'), 'utf8'));
 for (const route of routes) {
   const file = route === '/' ? 'index.html' : `${route.slice(1)}/index.html`;
   const html = await readFile(resolve(root, 'dist', file), 'utf8');
+  assert(!/https?:\/\/sacorteantiga\.com/i.test(html), `${route}: no bare-domain production URLs`);
   const tag = (attribute, value) => {
     const matches = [...html.matchAll(new RegExp(`<meta ${attribute}="${value}" content="([^"]*)"`, 'g'))];
     assert.equal(matches.length, 1, `${route}: exactly one ${value}`);
@@ -47,10 +48,13 @@ for (const route of routes) {
   const schema = JSON.parse(schemaTags[0][1]);
   assert.equal(schema['@context'], 'https://schema.org');
   assert.equal(schema['@graph'][0].url, origin + route);
+  assert.equal(schema['@graph'][0]['@id'], origin + route + '#webpage');
   assert.equal(schema['@graph'][0].inLanguage, 'en');
   const lodging = schema['@graph'].find(node => node['@type'] === 'LodgingBusiness');
   if (route.startsWith('/garden-house')) assert(!lodging);
   else {
+    assert.equal(lodging.url, origin + '/');
+    assert.equal(lodging['@id'], origin + '/#lodging');
     assert.equal(lodging.telephone, '+39 340 360 6054');
     assert.equal(lodging.address.addressLocality, 'Nebida');
     assert.equal(lodging.sameAs.length, 3);
@@ -60,7 +64,7 @@ for (const route of routes) {
 }
 const robots = await readFile(resolve(root, 'dist/robots.txt'), 'utf8');
 assert.match(robots, /User-agent: \*\s+Allow: \//);
-assert.match(robots, /Sitemap: https:\/\/sacorteantiga\.com\/sitemap\.xml/);
+assert(robots.includes(`Sitemap: ${origin}/sitemap.xml`));
 assert(!/Disallow:|\/api\/|ical/i.test(robots));
 const sitemap = await readFile(resolve(root, 'dist/sitemap.xml'), 'utf8');
 assert.match(sitemap, /xmlns="http:\/\/www\.sitemaps\.org\/schemas\/sitemap\/0\.9"/);
